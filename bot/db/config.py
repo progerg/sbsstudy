@@ -2,7 +2,7 @@ from os import getenv
 from asyncpg import create_pool, Pool
 
 # The URL of the database, fetched from the environment variables.
-DATABASE_URL = getenv("DATABASE_URL")
+DATABASE_URL = getenv("database_url")
 
 
 async def create_db_pool() -> Pool:

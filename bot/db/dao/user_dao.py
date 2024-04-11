@@ -20,7 +20,7 @@ class UserDAO(BaseDAO):
         :return: A dictionary representing the fetched user record. If no record is found, it returns None.
         """
 
-        query = "SELECT * FROM tg_users WHERE telegram_id = $1"
+        query = "SELECT * FROM tg_users WHERE tg_id = $1"
         return await self.fetchval(query, telegram_id)
 
     async def create_user(self, tg_id: int, first_name: str, last_name: str, username: str) -> str:
@@ -50,4 +50,4 @@ class UserDAO(BaseDAO):
 
         query = "SELECT COUNT(*) FROM tg_users"
         result = await self.fetchval(query)
-        return result.get("count")
+        return result

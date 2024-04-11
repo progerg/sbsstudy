@@ -28,7 +28,7 @@ def db_connection(func):
 
     @wraps(func)
     async def wrapper(*args, **kwargs):
-        async with await get_db_pool() as connection:
-            return await func(*args, connection=connection, **kwargs)
+        async with (await get_db_pool()).acquire() as connection:
+            return await func(*args, **kwargs, connection=connection)
     return wrapper
 

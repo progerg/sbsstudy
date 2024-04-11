@@ -11,8 +11,9 @@ class UserService:
     This class provides methods to interact with the User Data Access Object (DAO) to fetch and manipulate user data.
     """
 
+    @staticmethod
     @db_connection
-    async def get_user(self, user_id: int, connection: Connection) -> Record:
+    async def get_user(user_id: int, connection: Connection) -> Record:
         """
         Get user by id.
 
@@ -26,8 +27,9 @@ class UserService:
         user_dao = UserDAO(connection)
         return await user_dao.get_user_by_id(user_id)
 
+    @staticmethod
     @db_connection
-    async def get_users_count(self, connection: Connection) -> int:
+    async def get_users_count(connection: Connection) -> int:
         """
         Get the total number of users.
 
@@ -40,8 +42,9 @@ class UserService:
         user_dao = UserDAO(connection)
         return await user_dao.get_all_users_count()
 
+    @staticmethod
     @db_connection
-    async def create_user(self, tg_id: int, first_name: str, last_name: str, username: str, connection: Connection) -> str:
+    async def create_user(tg_id: int, first_name: str, last_name: str, username: str, connection: Connection) -> str:
         """
         Create a new user.
 

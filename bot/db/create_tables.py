@@ -14,7 +14,7 @@ async def create_user_table(connection: Connection) -> None:
     """
 
     await connection.execute("""
-    CREATE TABLE IF NOT EXISTS users (
+    CREATE TABLE IF NOT EXISTS tg_users (
         id SERIAL PRIMARY KEY,
         tg_id BIGINT NOT NULL,
         first_name VARCHAR(255) NOT NULL,
